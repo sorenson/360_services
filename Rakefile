@@ -1,6 +1,18 @@
 require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
+require 'echoe'
+
+Echoe.new('netrecorder', '0.2.0') do |p|
+  p.description    = "Ruby bindings for Sorenson 360"
+  p.url            = "http://github.com/sorensonmedia/360_services"
+  p.author         = "Sorenson Media"
+  p.email          = "video@sorensonmedia.com"
+  p.ignore_pattern = ["tmp/*", "script/*"]
+  p.development_dependencies = %w(echoe cucumber rspec netrecorder)
+end
+
+Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each { |ext| load ext }
 
 rerun = File.file?('rerun.txt') ? IO.read('rerun.txt') : ""
 rerun_opts = rerun.to_s.strip.empty? ? "--format progress features" : "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} #{rerun}"
