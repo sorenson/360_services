@@ -1,0 +1,6 @@
+== Testing
+Run all features
+  rake cucumber
+  
+Record all requests and responses (stub network calls)
+  rake cucumber RECORD_WEB=true
