@@ -1,3 +1,5 @@
+360_services.gemspec
+Manifest
 Rakefile
 fakeweb_cache
 features/manage_accounts.feature
@@ -45,4 +47,3 @@ lib/sorenson/services/metric.rb
 lib/sorenson/services/rate_plan.rb
 lib/sorenson/services/site.rb
 lib/sorenson/services/tag.rb
-Manifest
