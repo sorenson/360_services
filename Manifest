@@ -1,5 +1,5 @@
-360_services.gemspec
 Manifest
+README.rdoc
 Rakefile
 fakeweb_cache
 features/manage_accounts.feature

@@ -8,13 +8,13 @@ module Sorenson
       
       def self.find_by_name(name)
         data = get_from("/categories/find_by_name", :category => {:name => name})
-        return new(data) unless data.blank?
+        return new(data) unless data.nil? || data == ''
         nil
       end
       
       def self.find(id)
         data = get_from("/categories/#{id}")
-        return new(data) unless data.blank?
+        return new(data) unless data.nil? || data == ''
       end
             
       def self.create(name, options = {})

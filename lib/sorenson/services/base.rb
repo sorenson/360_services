@@ -13,7 +13,7 @@ module Sorenson
       cattr_accessor :account_id, :account_token
 
       def self.verify_account_settings
-        if @@account_id.blank? || @@account_token.blank?
+        if @@account_id.nil? || @@account_id == '' || @@account_token.nil? || @@account_token == ''
           raise Invalid360ServiceSetup.new("You must specify an account_id and account_token before using 360 services")
         end        
       end
