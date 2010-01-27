@@ -1,3 +1,6 @@
+= Sorenson 360 Video API - Ruby Bindings
+
+
 == Testing
 Run all features
   rake cucumber
