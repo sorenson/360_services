@@ -1,0 +1,7 @@
+.DS_Store
+lib/.DS_Store
+lib/sorenson/.DS_Store
+pkg
+rerun.txt
+coverage
+360_services.gemspec

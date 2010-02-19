@@ -7,8 +7,16 @@ And /^I get the asset with id "([^\"]*)"$/ do |arg1|
 end
 
 And "I get the first asset" do
-  @asset = Sorenson::Services::Asset.find(Sorenson::Services::Asset.all.first)
+  @asset = Sorenson::Services::Asset.find(Sorenson::Services::Asset.all.first.id)
   @asset.should_not be_nil
+end
+
+Then /^the asset's description should be "(.*)"/ do |value|
+  @asset.description.should == value
+end
+
+Then /the assets list should contain a asset with a id of "(.*)"/ do |guid|
+  @assets.map(&:id).include?(guid)
 end
 
 Then /^the asset count should be "([^\"]*)"$/ do |arg1|

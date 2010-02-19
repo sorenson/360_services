@@ -2,19 +2,20 @@ module Sorenson
   module Services
     class Category < Base
       attr_accessor :description, :name, :parent_id, :parent, :id
+      
       def self.all
         get_from("/categories").map{|c| c["name"]}
       end
       
       def self.find_by_name(name)
         data = get_from("/categories/find_by_name", :category => {:name => name})
-        return new(data) unless data.nil? || data == ''
+        return new(data) unless data.blank?
         nil
       end
       
       def self.find(id)
         data = get_from("/categories/#{id}")
-        return new(data) unless data.nil? || data == ''
+        return new(data) unless data.blank?
       end
             
       def self.create(name, options = {})

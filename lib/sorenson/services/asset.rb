@@ -19,7 +19,8 @@ module Sorenson
       #   names  = assets.collect {|asset| asset.name}
       #   => names = ["name1", "name2"]
       def self.all(offset = nil, quantity = nil)
-        get_from("/assets", :offset => offset, :quantity => quantity)["asset_list"]
+        list = get_from("/assets", :offset => offset, :quantity => quantity)["asset_list"]
+        list.collect {|a| new(a) }
       end
       
       # Get a list of asset guids by passing a tag name
@@ -40,7 +41,7 @@ module Sorenson
       end
                 
       def self.find(id)
-        new(get_from("/assets/#{id}"), id)
+        new(get_from("/assets/#{id}"))
       end
       
       def preset_xml
@@ -116,14 +117,14 @@ module Sorenson
         Group.new(Base.get_from("/groups/#{@group_id}")) if group_id
       end          
                         
-      def initialize(data, id)
+      def initialize(data)
         @encode_date         = data['encode_date']
         @frame_rate          = data['frame_rate']
         @height              = data['height']
         @date_last_modified  = data['date_last_modified']
         @video_bitrate_mode  = data['video_bitrate_mode']
         @media_type          = data['media_type']
-        @id                  = data['account_id']
+        @id                  = data['id']
         @account_id          = data['account_id']
         @number_of_views     = data['number_of_views']
         @application         = data['application']
@@ -147,8 +148,6 @@ module Sorenson
         @thumbnail_image_url = data['thumbnail_image_url']
         @direct_asset_url    = data['direct_asset_url']
         @groups              = data['groups']
-        @id = id
-        @metadata = id
       end
     end
   end

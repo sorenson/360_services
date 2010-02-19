@@ -13,17 +13,17 @@ module Sorenson
       cattr_accessor :account_id, :account_token
 
       def self.verify_account_settings
-        if @@account_id.nil? || @@account_id == '' || @@account_token.nil? || @@account_token == ''
+        if @@account_id.blank? || @@account_token.blank?
           raise Invalid360ServiceSetup.new("You must specify an account_id and account_token before using 360 services")
         end        
       end
             
-      def self.login_no_resource(username, password)        
+      def self.login_no_resource(username, password)
         RestClient.post(host + "/sessions", :username => username, :password => password)
       end
 
       def self.host
-        host = ENV['SORENSON_ENV'].eql?('cucumber') ? 'http://localhost:3001' : 'http://360services.sorensonmedia.com' 
+        host = ( ENV['SORENSON_ENV'].eql?('cucumber') || ['development', 'test', 'cucumber'].include?(RAILS_ENV) ) ? 'http://localhost:3001' : 'http://360services.sorensonmedia.com' 
         host
       end
 
