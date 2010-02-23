@@ -2,7 +2,7 @@ When /^I get all flags$/ do
   @flags = Sorenson::Services::Flag.all
 end
 
-Then /^the flag count should be ([^\"]*)$/ do |count|
+Then /^the flag count should be "(.*)"$/ do |count|
   Sorenson::Services::Flag.count.should == count.to_i
 end
 

@@ -11,7 +11,7 @@ module Sorenson
                     :permalink_location, :status, :description, :video_duration, :abstract_file_id, :version_id,
                     :date_retrieved, :audio_data_rate, :audio_bitrate_mode, :video_codec, :display_name, :name,
                     :video_data_rate, :author_id, :width, :file_size, :thumbnail_image_url, :direct_asset_url, 
-                    :password, :metadata, :groups
+                    :password, :metadata, :groups, :embed_list
       
       # Get all of the assets as a list of guids.  Use offset and quantity to return subsets.
       #   Sorenson::Services::Account.login('username', 'password')
@@ -114,9 +114,9 @@ module Sorenson
       end
       
       def group
-        Group.new(Base.get_from("/groups/#{@group_id}")) if group_id
-      end          
-                        
+        Group.new(Base.get_from("/groups/#{@group_id}")) if @group_id
+      end
+      
       def initialize(data)
         @encode_date         = data['encode_date']
         @frame_rate          = data['frame_rate']
@@ -147,7 +147,8 @@ module Sorenson
         @file_size           = data['file_size']
         @thumbnail_image_url = data['thumbnail_image_url']
         @direct_asset_url    = data['direct_asset_url']
-        @groups              = data['groups']
+        @group_id            = data['group_id']
+        @embed_list          = data['embed_list']
       end
     end
   end

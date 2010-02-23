@@ -4,7 +4,8 @@ module Sorenson
       attr_accessor :name, :description, :account_id, :id, :guid
 
       def self.create(name, attributes={})
-        new(post_to("/groups", :group => attributes.merge(:name => name)))
+        data = post_to("/groups", :group => attributes.merge(:name => name))
+        new(data['group'])
       end
       
       def self.all
@@ -34,7 +35,7 @@ module Sorenson
       
       def assets
         collection = Base.get_from("/groups/#{id}/assets")
-        collection.collect { |data| new(data['asset'] )}
+        collection.collect { |data| Sorenson::Services::Asset.new(data) }
       end
       
       def users

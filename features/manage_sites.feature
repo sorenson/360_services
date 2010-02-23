@@ -13,5 +13,5 @@ Scenario: Get a site by name
   Given I am logged in
   When I create a new site with the name "new site name" and the description "new site description"
   And I get the site named "new site name"
-  Then the site attribute "id" should be "b4b866a0-d7d8-012c-1ba4-00254b9d9628"
+  Then the site attribute "id" should be "b8453bf0-fe23-012c-3e4c-0026bb5241fa"
   

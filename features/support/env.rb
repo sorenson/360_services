@@ -1,4 +1,4 @@
-ENV['SORENSON_ENV'] = "cucumber"
+ENV['RAILS_ENV'] = "cucumber"
 require 'rubygems'
 require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
 require 'webrat'

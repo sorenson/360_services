@@ -23,7 +23,7 @@ module Sorenson
       end
 
       def self.host
-        host = ( ENV['SORENSON_ENV'].eql?('cucumber') || ['development', 'test', 'cucumber'].include?(RAILS_ENV) ) ? 'http://localhost:3001' : 'http://360services.sorensonmedia.com' 
+        host = ['development', 'test', 'cucumber'].include?(ENV['RAILS_ENV'])  ? 'http://localhost:3001' : 'http://360services.sorensonmedia.com' 
         host
       end
 

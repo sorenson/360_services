@@ -5,11 +5,11 @@ Feature: Manage Metrics
 
 Scenario: See Total Plays
   Given I am logged in
-  Then the total plays should be "12"
+  Then the total plays should be "39"
 
 Scenario: See Storage Used
   Given I am logged in
-  Then the storage used should be "-12290471.0"
+  Then the storage used should be "42581251.0"
   
 Scenario: See all metrics
   Given I am logged in

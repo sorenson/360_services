@@ -3,13 +3,13 @@ When /^I add the asset to the group$/ do
 end
 
 Then /^the asset should be in the group$/ do
-  @group.assets.should include(@asset.id)
+  @group.assets.map(&:id).should include(@asset.id)
 end
 
 Then /^the asset should have the group$/ do
-  @asset.groups.should include(@group.id)
+  @asset.group.should == @group
 end
 
 Then /^the group should have the asset$/ do
-  @group.assets.should include(@asset.id) # express the regexp above with the code you wish you had
+  @group.assets.map(&:id).should include(@asset.id)
 end

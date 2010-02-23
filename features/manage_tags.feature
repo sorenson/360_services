@@ -27,7 +27,7 @@ Scenario: Get asset tags
 
 Scenario: Get tag count
   Given I am logged in
-  Then the tag count should be "7"
+  Then the tag count should be "4"
   
 Scenario: Get all tags
   Given I am logged in

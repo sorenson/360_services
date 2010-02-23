@@ -19,7 +19,7 @@ Scenario: List flagged assets
 
 Scenario: Count flags
   Given I am logged in
-  Then the flag count should be 4
+  Then the flag count should be "4"
   
 Scenario: Add flags to asset
   Given I am logged in
@@ -34,7 +34,7 @@ Scenario: Find all assets by flag
   And I get the first asset
   And I assign the flag "red" to the asset
   And I find all assets with the flag "red"
-  Then the assets list should contain "c67f1fdb-8199-4b5c-921f-d864cf2d903f"
+  Then the assets list should contain "a5ef53eb-032e-4983-9828-ee72ee6c6bc2"
 
 Scenario: Get asset flags
   Given I am logged in

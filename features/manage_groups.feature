@@ -10,7 +10,7 @@ Background:
 
 Scenario: Create a group
   When I create a group named "my group"
-  Then the group attribute "name" should be "my group"
+  Then the group's name should be "my group"
 
 Scenario: Find a group by id
   When I create a group named "my group"
@@ -19,7 +19,7 @@ Scenario: Find a group by id
 Scenario: Get all groups
   And I create a group named "my group"
   And I get all groups
-  Then the groups list should contain the group id
+  Then the group list should contain the group
   
 Scenario: Delete a group
   When I create a group named "delete me"

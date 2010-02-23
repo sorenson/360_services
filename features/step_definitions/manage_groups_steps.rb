@@ -11,7 +11,11 @@ When /^I reload the group$/ do
 end
 
 Then /^I should be able to find the group$/ do
-  @group = Sorenson::Services::Group.find(Sorenson::Services::Group.all.first)
+  @group = Sorenson::Services::Group.find(@group.id)
+end
+
+Then /^the group's name should be "(.*)"/ do |name|
+  @group.name.should == name
 end
 
 And /^I get all groups$/ do
@@ -19,9 +23,13 @@ And /^I get all groups$/ do
 end
 
 Then /^I delete the group if it was found$/ do
-  @group.destroy if @group
+  @group.delete if @group
 end
 
 Then /^I delete the group$/ do
-  @group.destroy
+  @group.delete
+end
+
+Then /^the group list should contain the group$/ do
+  @groups.include?(@group)
 end

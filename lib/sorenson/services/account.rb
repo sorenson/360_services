@@ -3,6 +3,7 @@ module Sorenson
     class Account < Base
       attr_accessor :rate_plan, :username, :status, :customer_id, :id, :rate_plan_expiration_date, :date_last_modified, 
                     :last_login_time, :date_retrieved, :total_asset_count, :token
+      cattr_accessor :account_token, :account_id
       
       def self.login(username, password)
         account = Account.new(JSON.parse(login_no_resource(username, password)))
