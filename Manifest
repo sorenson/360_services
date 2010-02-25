@@ -1,7 +1,6 @@
 Manifest
 README.rdoc
 Rakefile
-fakeweb_cache
 features/manage_accounts.feature
 features/manage_assets.feature
 features/manage_categories.feature
