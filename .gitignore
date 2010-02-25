@@ -5,3 +5,4 @@ pkg
 rerun.txt
 coverage
 360_services.gemspec
+fakeweb_cache

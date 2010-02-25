@@ -3,8 +3,8 @@ require 'rubygems'
 require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
 require 'webrat'
 require 'webrat/core/matchers'
-require 'fakeweb'
-require 'netrecorder'
+# require 'fakeweb'
+# require 'netrecorder'
 require "#{File.dirname(__FILE__)}/../../lib/sorenson/services.rb"
 
 Webrat.configure do |config|

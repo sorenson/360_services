@@ -57,6 +57,8 @@ end
 
 When /^I reload the asset$/ do
   @asset = Sorenson::Services::Asset.find(@asset.id)
+  p 'reload asset   '
+  p "asset.group: #{@asset.group_id}<br/>"
 end
 
 Then /^I get the embed codes$/ do

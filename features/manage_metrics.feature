@@ -9,7 +9,7 @@ Scenario: See Total Plays
 
 Scenario: See Storage Used
   Given I am logged in
-  Then the storage used should be "42581251.0"
+  Then the storage used should be "13255511.0"
   
 Scenario: See all metrics
   Given I am logged in

@@ -25,7 +25,7 @@ Scenario: Get asset
 
 Scenario: Get asset count
   Given I am logged in
-  Then the asset count should be "67"
+  Then the asset count should be "1"
   
 Scenario: Get asset presets
   Given I am logged in

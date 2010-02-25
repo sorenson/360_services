@@ -11,7 +11,7 @@ module Sorenson
                     :permalink_location, :status, :description, :video_duration, :abstract_file_id, :version_id,
                     :date_retrieved, :audio_data_rate, :audio_bitrate_mode, :video_codec, :display_name, :name,
                     :video_data_rate, :author_id, :width, :file_size, :thumbnail_image_url, :direct_asset_url, 
-                    :password, :metadata, :groups, :embed_list
+                    :password, :metadata, :groups, :embed_list, :group_id
       
       # Get all of the assets as a list of guids.  Use offset and quantity to return subsets.
       #   Sorenson::Services::Account.login('username', 'password')
@@ -25,11 +25,12 @@ module Sorenson
       
       # Get a list of asset guids by passing a tag name
       def self.find_all_by_tag(tag_name)
-        get_from("/tags/#{tag_name}/assets")
+        p account_id
+        get_from("/tags/#{tag_name}/assets", :account_id => account_id)
       end
       
       def self.find_all_by_flag(flag_name)
-        get_from("/flags/#{flag_name}/assets")
+        get_from("/flags/#{flag_name}/assets?account_id=#{account_id}")
       end
       
       def tags
@@ -114,7 +115,8 @@ module Sorenson
       end
       
       def group
-        Group.new(Base.get_from("/groups/#{@group_id}")) if @group_id
+        return nil if @group_id.nil?
+        Group.new(Base.get_from("/groups/#{group_id}")['group'])
       end
       
       def initialize(data)

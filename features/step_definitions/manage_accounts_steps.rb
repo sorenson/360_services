@@ -3,7 +3,7 @@ Given /^I (?:am logged|should be able to log) in with "([^\"]*)" and "([^\"]*)"$
 end
 
 Given "I am logged in" do
-  @account = Sorenson::Services::Account.login("integrum@integrumtech.com", "integrum")
+  @account = Sorenson::Services::Account.login("360services@sorensonmedia.com", "S0r3ns0n")
 end
 
 And /^I get an account$/ do

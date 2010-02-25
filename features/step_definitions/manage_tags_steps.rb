@@ -15,6 +15,7 @@ When /^I find all assets with the tag "([^\"]*)"$/ do |arg1|
 end
 
 When /^I get the tags for the asset$/ do
+  y @asset.tags
   @tags = @asset.tags
 end
 

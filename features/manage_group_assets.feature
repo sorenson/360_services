@@ -28,6 +28,4 @@ Scenario: Get group assets
   And I add the asset to the group
   And I reload the group
   Then the group should have the asset
-  
-  
-  
+
