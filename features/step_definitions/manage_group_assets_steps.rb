@@ -7,10 +7,6 @@ Then /^the asset should be in the group$/ do
 end
 
 Then /^the asset should have the group$/ do
-  p "asset should have the group    "
-  p "(asset.id: #{@asset.id}) "
-  p "(asset.group.id: #{@asset.group_id})<br/>"
-
   @asset.group.guid.should == @group.guid
   @asset.group.name.should == @group.name
 end

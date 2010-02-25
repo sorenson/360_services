@@ -5,7 +5,7 @@ Feature: Manage Metrics
 
 Scenario: See Total Plays
   Given I am logged in
-  Then the total plays should be "39"
+  Then the total plays should be "1"
 
 Scenario: See Storage Used
   Given I am logged in
@@ -14,9 +14,5 @@ Scenario: See Storage Used
 Scenario: See all metrics
   Given I am logged in
   And I get all metrics
-  Then the events list should contain an event with a day of "2009-12-17"
-
-
-
-
+  Then the events list should contain an event with a day of "2010-02-24"
 

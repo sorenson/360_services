@@ -4,7 +4,6 @@ end
 
 When /^I create a group named "([^\"]*)"$/ do |name|
   @group = Sorenson::Services::Group.create(name)
-  p "@group.id   #{@group.id}<br/>"
 end
 
 When /^I reload the group$/ do
