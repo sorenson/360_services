@@ -30,7 +30,7 @@ Scenario: Find all assets by flag
   And I get the first asset
   And I assign the flag "red" to the asset
   And I find all assets with the flag "red"
-  Then the assets list should contain "6913b8ae-9b47-4487-87b2-d1d4d103f4de"
+  Then the assets list should contain "9cf8161e-dea5-40ec-990b-d5d24c0d4191"
 
 Scenario: Get asset flags
   Given I am logged in

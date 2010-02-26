@@ -25,12 +25,11 @@ module Sorenson
       
       # Get a list of asset guids by passing a tag name
       def self.find_all_by_tag(tag_name)
-        p account_id
         get_from("/tags/#{tag_name}/assets", :account_id => account_id)
       end
       
       def self.find_all_by_flag(flag_name)
-        get_from("/flags/#{flag_name}/assets?account_id=#{account_id}")
+        get_from("/flags/#{flag_name}/assets", :account_id => account_id)
       end
       
       def tags
@@ -71,6 +70,7 @@ module Sorenson
       
       def remove_category
         category = self.category
+        return true if category.nil?
         Base.delete_from("/assets/#{id}/categories/#{category.id}")
       end
       
