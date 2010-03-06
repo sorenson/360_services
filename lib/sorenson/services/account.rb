@@ -33,6 +33,14 @@ module Sorenson
         Base.post_to("/accounts/#{account_id}/empty_trash")['status']
       end
       
+      def get_subaccounts
+        get_from("/subaccounts")
+      end
+      
+      def create_subaccount(username, email, password)
+        Base.post_to("/subaccounts", :subaccount => {:username => username, :email => email, :password => password})
+      end
+      
       def initialize(data)
         self.username                  = data['username']
         self.status                    = data['status']
