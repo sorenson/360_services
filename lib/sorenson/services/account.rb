@@ -2,11 +2,12 @@ module Sorenson
   module Services
     class Account < Base
       attr_accessor :rate_plan, :username, :status, :customer_id, :id, :rate_plan_expiration_date, :date_last_modified, 
-                    :last_login_time, :date_retrieved, :total_asset_count, :token
+                    :last_login_time, :date_retrieved, :total_asset_count, :token, :subaccount_id
       cattr_accessor :account_token, :account_id
       
       def self.login(username, password)
-        account = Account.new(JSON.parse(login_no_resource(username, password)))
+        data = JSON.parse(login_no_resource(username, password))
+        account = Account.new(data)
         self.account_token  = account.token
         self.account_id     = account.id
         return account if account.token
@@ -46,6 +47,7 @@ module Sorenson
         self.status                    = data['status']
         self.customer_id               = data['id']
         self.id                        = data['id']
+        self.subaccount_id             = data['subaccountId']
         self.rate_plan_expiration_date = data['rate_plan_expiration_date']
         self.date_last_modified        = data['date_last_modified']
         self.last_login_time           = data['last_login_time']
