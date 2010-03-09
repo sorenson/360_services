@@ -1,3 +1,5 @@
+(MAKE SURE YOU INCREMENT THE VERSION NUMBER in the Rakefile)
+
 1. GET INTO THIS DIRECTORY
 cd 360_services_gem
 
@@ -18,7 +20,7 @@ cd pkg
 
 7. PUSH GEM TO GEMCUTTER (MAKE SURE GEMCUTTER GEM IS INSTALLED)
 gem install gemcutter    (IF NEEDED)
-gem push 360_services-0.0.1.gem  (MAKE SURE VERSION NUMBER WAS INCREMENTED CORRECTLY)
+gem push 360_services-0.0.5.gem  (MAKE SURE YOU INCREMENTED THE VERSION NUMBER in the Rakefile!!!)
 
 8. INSTALL THE FINISHED GEM LOCALLY
 gem install 360_services

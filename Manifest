@@ -1,3 +1,4 @@
+HOW_TO_BUILD.txt
 Manifest
 README.rdoc
 Rakefile
@@ -43,6 +44,8 @@ lib/sorenson/services/event.rb
 lib/sorenson/services/flag.rb
 lib/sorenson/services/group.rb
 lib/sorenson/services/metric.rb
+lib/sorenson/services/preset.rb
 lib/sorenson/services/rate_plan.rb
 lib/sorenson/services/site.rb
+lib/sorenson/services/subaccount.rb
 lib/sorenson/services/tag.rb
