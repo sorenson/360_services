@@ -13,6 +13,7 @@ module Sorenson
       end
       
       def self.update(name, attributes={})
+        return nil if attributes[:preset_ids].nil?
         attributes[:preset_ids] = attributes[:preset_ids].join(",")
         guid = attributes.delete(:group_id)
         data = put_to("/groups/#{guid}", :group => attributes.merge({:name => name, :id => guid}))
