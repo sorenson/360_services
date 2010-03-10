@@ -3,8 +3,19 @@ module Sorenson
     class Group < Base
       attr_accessor :name, :description, :account_id, :id, :guid
 
+      def self.presets(group_id)
+        get_from("/groups/#{group_id}/presets")
+      end
+
       def self.create(name, attributes={})
         data = post_to("/groups", :group => attributes.merge(:name => name))
+        new(data['group'])
+      end
+      
+      def self.update(name, attributes={})
+        attributes[:preset_ids] = attributes[:preset_ids].join(",")
+        guid = attributes.delete(:group_id)
+        data = put_to("/groups/#{guid}", :group => attributes.merge({:name => name, :id => guid}))
         new(data['group'])
       end
       
