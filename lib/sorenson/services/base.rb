@@ -19,11 +19,11 @@ module Sorenson
       end
             
       def self.login_no_resource(username, password)
-        RestClient.post(host + "/sessions", :username => username, :password => password)
+        RestClient.post(host + "/sessions", :username => username, :password => password).body
       end
 
       def self.host
-        host = ['development', 'test', 'cucumber'].include?(ENV['RAILS_ENV'])  ? 'http://localhost:3001' : 'http://360services.sorensonmedia.com' 
+        host = ['development', 'test', 'cucumber'].include?(RAILS_ENV)  ? 'http://localhost:3001' : 'http://360services.sorensonmedia.com' 
         host
       end
 
@@ -61,7 +61,7 @@ module Sorenson
       
       def self.parse_response(response)
         begin
-          JSON.parse(response)
+          JSON.parse(response.body)
         rescue JSON::ParserError => e
           raise InvalidServerResponse.new("Sorenson::Services::InvalidServerResponse: #{e.message}")
         end
