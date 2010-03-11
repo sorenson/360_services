@@ -35,7 +35,7 @@ module Sorenson
       end
       
       def get_subaccounts
-        get_from("/subaccounts")
+        Base.get_from("/subaccounts")
       end
       
       def create_subaccount(username, email, password)
