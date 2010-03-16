@@ -60,8 +60,8 @@ module Sorenson
         Base.delete_from("/assets/#{id}")["status"]
       end
       
-      def save
-        Base.put_to("/assets/#{id}", :asset => {:name => name, :password => password, :description => description})
+      def save(attributes={})
+        Base.put_to("/assets/#{id}", :asset => {:name => name, :password => password, :description => description}.merge(attributes))
       end
       
       def add_category(name)
