@@ -3,7 +3,8 @@ require 'cucumber'
 require 'cucumber/rake/task'
 require 'echoe'
 
-Echoe.new('360_services', '0.0.8') do |p|
+
+Echoe.new('360_services', '1.0.5') do |p|
   p.description    = "Ruby bindings for Sorenson 360"
   p.url            = "http://github.com/sorenson/360_services"
   p.author         = "Sorenson Media"
