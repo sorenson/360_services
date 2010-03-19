@@ -37,6 +37,8 @@ module Sorenson
       end
       
       def add_asset(asset)
+        # If you have an Asset it memory, using this method does not update the assets state
+        # You would need to "Re"-find the asset to get the update to date state
         Base.put_to("/groups/#{id}/assets/#{asset.id}")
       end
       

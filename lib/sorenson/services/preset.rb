@@ -16,6 +16,10 @@ module Sorenson
           response['url']
         end
       end
+      
+      def self.create(name, group_id, file)
+        post_to("/presets", :file_name => name, :group_guid => group_id, :file => file)
+      end
     end
   end
 end

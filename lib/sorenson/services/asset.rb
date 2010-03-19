@@ -11,7 +11,7 @@ module Sorenson
                     :permalink_location, :status, :description, :video_duration, :abstract_file_id, :version_id,
                     :date_retrieved, :audio_data_rate, :audio_bitrate_mode, :video_codec, :display_name, :name,
                     :video_data_rate, :author_id, :width, :file_size, :thumbnail_image_url, :direct_asset_url, 
-                    :password, :metadata, :groups, :embed_list, :group_id
+                    :password, :metadata, :embed_list, :group_id
       
       # Get all of the assets as a list of guids.  Use offset and quantity to return subsets.
       #   Sorenson::Services::Account.login('username', 'password')
@@ -41,7 +41,9 @@ module Sorenson
       end
                 
       def self.find(id)
-        new(get_from("/assets/#{id}"))
+        data = get_from("/assets/#{id}")
+        return nil if data[:status].eql?('invalid asset id')
+        new(data)
       end
       
       def preset_xml
@@ -117,6 +119,13 @@ module Sorenson
       def group
         return nil if @group_id.nil?
         Group.new(Base.get_from("/groups/#{group_id}")['group'])
+      end
+      
+      def add_group(group)
+        data = Base.put_to("/groups/#{group.id}/assets/#{id}")
+        if data["status"].eql?("Success")
+          @group_id = group.id
+        end
       end
       
       def initialize(data)

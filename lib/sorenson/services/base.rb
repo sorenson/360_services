@@ -61,7 +61,12 @@ module Sorenson
       
       def self.parse_response(response)
         begin
-          JSON.parse(response.body)
+          data = JSON.parse(response.body)
+          if data.is_a?(Hash)
+            HashWithIndifferentAccess.new.merge(data)
+          else
+            data
+          end
         rescue JSON::ParserError => e
           raise InvalidServerResponse.new("Sorenson::Services::InvalidServerResponse: #{e.message}")
         end

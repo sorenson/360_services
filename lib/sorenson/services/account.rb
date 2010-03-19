@@ -38,9 +38,10 @@ module Sorenson
         Base.get_from("/subaccounts")
       end
       
-      def create_subaccount(username, email, password)
-        Base.post_to("/subaccounts", :subaccount => {:username => username, :email => email, :password => password})
+      def create_subaccount(username_email, password)
+        Base.post_to("/subaccounts", :subaccount => {:username => username_email, :email => username_email, :password => password})
       end
+      
       
       def initialize(data)
         self.username                  = data['username']
