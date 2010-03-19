@@ -11,7 +11,7 @@ module Sorenson
                     :permalink_location, :status, :description, :video_duration, :abstract_file_id, :version_id,
                     :date_retrieved, :audio_data_rate, :audio_bitrate_mode, :video_codec, :display_name, :name,
                     :video_data_rate, :author_id, :width, :file_size, :thumbnail_image_url, :direct_asset_url, 
-                    :password, :metadata, :embed_list, :group_id
+                    :password, :metadata, :embed_list, :group_id, :video_guid, :streaming_server_and_video_path
       
       # Get all of the assets as a list of guids.  Use offset and quantity to return subsets.
       #   Sorenson::Services::Account.login('username', 'password')
@@ -123,8 +123,19 @@ module Sorenson
       
       def add_group(group)
         data = Base.put_to("/groups/#{group.id}/assets/#{id}")
-        if data["status"].eql?("Success")
+        if data['status'].eql?('Success')
           @group_id = group.id
+        else
+          data['status']
+        end
+      end
+      
+      def streaming_server_and_video_path
+        data = Base.get_from("/videos/#{id}/streaming_url")
+        if data['status'].eql?("not found")
+          nil
+        else
+           data
         end
       end
       
@@ -160,6 +171,7 @@ module Sorenson
         @direct_asset_url    = data['direct_asset_url']
         @group_id            = data['group_id']
         @embed_list          = data['embed_list']
+        @video_guid          = @embed_list.empty? ? nil : @embed_list.first[1].match(/videoGUID=(.*?)&/)[1]
       end
     end
   end
