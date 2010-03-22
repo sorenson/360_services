@@ -5,7 +5,7 @@ require 'echoe'
 
 
 Echoe.new('360_services', '1.0.9') do |p|
-  p.description    = "Ruby bindings for Sorenson 360"
+  p.description    = "Ruby bindings for Sorenson 360 Services"
   p.url            = "http://github.com/sorenson/360_services"
   p.author         = "Sorenson Media"
   p.email          = "video@sorensonmedia.com"
