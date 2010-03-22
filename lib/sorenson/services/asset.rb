@@ -171,7 +171,7 @@ module Sorenson
         @direct_asset_url    = data['direct_asset_url']
         @group_id            = data['group_id']
         @embed_list          = data['embed_list']
-        @video_guid          = @embed_list.empty? ? nil : @embed_list.first[1].match(/videoGUID=(.*?)&/)[1]
+        @video_guid          = @embed_list.empty? ? nil : @embed_list.to_a.first[1].match(/videoGUID=(.*?)&/)[1]
       end
     end
   end
