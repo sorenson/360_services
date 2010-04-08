@@ -23,8 +23,7 @@ module Sorenson
       end
 
       def self.host
-        host = ['development', 'test', 'cucumber'].include?(RAILS_ENV)  ? 'http://localhost:3001' : 'http://360services.sorensonmedia.com' 
-        host
+        ((RAILS_ENV['360LOCAL'].upcase == 'TRUE' &&  RAILS_ENV == 'development') || ['test', 'cucumber'].include?(RAILS_ENV)) ? 'http://localhost:3001' : 'http://360services.sorensonmedia.com'
       end
 
       def self.post_to(url, payload = {})
