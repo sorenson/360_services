@@ -5,7 +5,7 @@ module Sorenson
         url = "/flags#{"?order="+order if order}"
         get_from(url)
       end
-      
+
       def self.count
         get_from("/accounts/#{account_id}/flags/count")["count"]
       end

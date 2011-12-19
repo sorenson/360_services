@@ -15,12 +15,12 @@ Scenario: Create a group
 Scenario: Find a group by id
   When I create a group named "my group"
   Then I should be able to find the group
-  
+
 Scenario: Get all groups
   And I create a group named "my group"
   And I get all groups
   Then the group list should contain the group
-  
+
 Scenario: Delete a group
   When I create a group named "delete me"
   And I reload the group

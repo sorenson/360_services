@@ -22,7 +22,7 @@ Scenario: See the asset category
   And I assign the category "asset category" to the asset
   When I get the category
   Then the category attribute "name" should be "asset category"
-  
+
 Scenario: See all categories
   Given I am logged in
   When I create a category named "category1"
@@ -47,7 +47,7 @@ Scenario: Save a category
   And I save the category
   When I find the category named "category1"
   Then the category attribute "description" should be "moocow"
-  
+
 Scenario: Add a sub category
   Given I am logged in
   When I create a category named "category1"
@@ -56,7 +56,7 @@ Scenario: Add a sub category
   And I save the category
   When I find the category named "child of category 1"
   Then the parent of the category should be "category1"
-  
+
 Scenario: Delete a category
   Given I am logged in
   And I create a category named "category1"
@@ -83,5 +83,4 @@ Scenario: List root categories
   And I get the root categories
   Then the categories list should contain "cat1"
   And the categories list should not contain "cat1 child"
-  
-  
+

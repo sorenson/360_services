@@ -39,7 +39,7 @@ Then /^the parent of the category should be "([^\"]*)"$/ do |name|
   @category.parent.should == name
 end
 
-When /^I delete the category$/ do 
+When /^I delete the category$/ do
   @category.destroy
 end
 
