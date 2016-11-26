@@ -2,9 +2,9 @@ module Sorenson
   module Services
     class RatePlan < Base
       attr_accessor :display_name, :rate_plan_type, :max_thumbnails_per_video, :setup_cost, :monthly_cost, :annual_cost, :allowed_streams, :base_plan,
-                    :date_last_modified, :date_retrieved, :streaming_overage_allowed, :storage_overage_allowed, :allowed_streaming_megabytes,     
-                    :allowed_storage_megabytes, :allowed_source_media_types, :allowed_output_media_types, :sorenson_sku, :data               
-      
+                    :date_last_modified, :date_retrieved, :streaming_overage_allowed, :storage_overage_allowed, :allowed_streaming_megabytes,
+                    :allowed_storage_megabytes, :allowed_source_media_types, :allowed_output_media_types, :sorenson_sku, :data
+
       def initialize(data)
         @display_name                = data['display_name']
         @rate_plan_type              = data['rate_plan_type']

@@ -7,7 +7,7 @@ Scenario: Get a list of asset guids by passing a tag name
   Given I am logged in
   And I get all assets
   # Then the assets list should contain a asset with a id of "e036f43c-2a9f-407f-bc26-19af2b89d222"
-  
+
 Scenario: Save an asset
   Given I am logged in
   And I get the asset with id "e036f43c-2a9f-407f-bc26-19af2b89d222"
@@ -17,7 +17,7 @@ Scenario: Save an asset
   Then the asset's description should be "new description"
   Then I change the asset attribute "description" to "description"
   And I save the asset
-  
+
 Scenario: Get asset
   Given I am logged in
   And I get the asset with id "e036f43c-2a9f-407f-bc26-19af2b89d222"
@@ -26,12 +26,12 @@ Scenario: Get asset
 Scenario: Get asset count
   Given I am logged in
   Then the asset count should be "1"
-  
+
 Scenario: Get asset presets
   Given I am logged in
   And I get the asset with id "e036f43c-2a9f-407f-bc26-19af2b89d222"
   Then the preset xml should contain "MP4-squish-007.xss"
-  
+
 Scenario: Activate and Deactivate
   Given I am logged in
   And I get the asset with id "e036f43c-2a9f-407f-bc26-19af2b89d222"
@@ -41,7 +41,7 @@ Scenario: Activate and Deactivate
   When I activate the asset
   And I get all assets
   Then the assets list should contain a asset with a id of "e036f43c-2a9f-407f-bc26-19af2b89d222"
-  
+
 Scenario: Delete an asset
   Given I am logged in
   And I get the asset with id "e036f43c-2a9f-407f-bc26-19af2b89d222"
@@ -51,7 +51,7 @@ Scenario: Delete an asset
   When I undelete the asset
   And I get all assets
   Then the assets list should contain a asset with a id of "e036f43c-2a9f-407f-bc26-19af2b89d222"
-  
+
 
 
 Scenario: Get asset embed codes

@@ -1,10 +1,10 @@
 module Sorenson
   module Services
     class Account < Base
-      attr_accessor :rate_plan, :username, :status, :customer_id, :id, :rate_plan_expiration_date, :date_last_modified, 
+      attr_accessor :rate_plan, :username, :status, :customer_id, :id, :rate_plan_expiration_date, :date_last_modified,
                     :last_login_time, :date_retrieved, :total_asset_count, :token, :subaccount_id, :session_id
       cattr_accessor :account_token, :account_id
-      
+
       def self.login(username, password)
         data = JSON.parse(login_no_resource(username, password))
         account = Account.new(data)
@@ -12,37 +12,37 @@ module Sorenson
         self.account_id     = account.id
         return account if account.token
       end
-      
+
       # Get Accout
       def self.get_account
         new(get_from("/accounts/#{account_id}"))
       end
-      
+
       def rate_plan
         RatePlan.new(Base.get_from("/accounts/#{account_id}/rate_plan"))
       end
-      
+
       def overage_action
         Base.get_from("/accounts/#{account_id}/overage_action")["overage_action"]
       end
-      
+
       def set_password(password, old_password)
         Base.put_to("/accounts/#{account_id}", :account => {:password => password, :old_password => old_password})[:status]
       end
-      
+
       def empty_trash
         Base.post_to("/accounts/#{account_id}/empty_trash")['status']
       end
-      
+
       def get_subaccounts
         Base.get_from("/subaccounts")
       end
-      
+
       def create_subaccount(username_email, password)
         Base.post_to("/subaccounts", :subaccount => {:username => username_email, :email => username_email, :password => password})
       end
-      
-      
+
+
       def initialize(data)
         self.username                  = data['username']
         self.status                    = data['status']

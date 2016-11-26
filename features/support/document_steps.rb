@@ -9,14 +9,14 @@ if ENV['SHOW_STEPS']
           $scenario_names ||= {}
           scenario_name = @rb_language.instance_variable_get("@step_mother").instance_variable_get("@current_scenario").name
           $scenario_names[scenario_name] ||= []
-        
+
           step_file_name = File.join("#{File.dirname(__FILE__)}/../../", file_colon_line.split(":").first)
           line_num = file_colon_line.split(":").last
-        
+
           source = File.open(step_file_name, "r") do |f|
             f.readlines
           end
-         
+
           source.each_with_index do |line, i|
             if i >= line_num.to_i
               break if line.match(/^end\s+/)
@@ -28,7 +28,7 @@ if ENV['SHOW_STEPS']
       end
     end
   end
-  at_exit do  
+  at_exit do
     doc_lines = []
     $scenario_names.each do |name, lines|
       doc_lines << "# #{name}\n"
@@ -37,10 +37,10 @@ if ENV['SHOW_STEPS']
       end
       doc_lines << "\n"
     end
-    
+
     File.open(File.join(File.dirname(__FILE__), '..', '..', 'doc', 'steps_code.rb'), 'w') do |f|
       f.write doc_lines.join("")
     end
-    
+
   end
 end

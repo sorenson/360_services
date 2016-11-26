@@ -10,7 +10,7 @@ Scenario: Add tags to asset
   Then the tags list should contain "apple"
   Then the tags list should contain "orange"
   Then the tags list should contain "pear"
-  
+
 Scenario: Find all assets by tag
   Given I am logged in
   And I get the first asset
@@ -28,7 +28,7 @@ Scenario: Get asset tags
 Scenario: Get tag count
   Given I am logged in
   Then the tag count should be "4"
-  
+
 Scenario: Get all tags
   Given I am logged in
   And I get the first asset

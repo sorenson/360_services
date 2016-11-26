@@ -16,7 +16,7 @@ Scenario: List flagged assets
   And I assign the flags "red blue green" to the asset
   When I get all flags
   Then the flags list should contain "red"
-  
+
 Scenario: Add flags to asset
   Given I am logged in
   And I get the first asset
